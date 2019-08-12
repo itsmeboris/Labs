@@ -1,0 +1,17 @@
+all: mypipeline
+
+mypipeline: line_parser.o task2.o
+	gcc task2.o line_parser.o -o mypipeline
+	rm -rf *.o *~
+
+line_parser.o: line_parser.c
+	gcc -c -o line_parser.o line_parser.c
+
+task2.o: task2.c
+	gcc -c -o task2.o task2.c
+
+clean:
+	rm -rf *.o *~
+
+real_clean:
+	 rm -rf *.o myshell *~

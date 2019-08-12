@@ -1,0 +1,17 @@
+all: myshell
+
+myshell: line_parser.o task3.o
+	gcc task3.o line_parser.o -o myshell
+	rm -rf *.o *~
+
+line_parser.o: line_parser.c
+	gcc -c -o line_parser.o line_parser.c
+
+task3.o: task3.c
+	gcc -c -o task3.o task3.c
+
+clean:
+	rm -rf *.o *~
+
+real_clean:
+	 rm -rf *.o myshell *~

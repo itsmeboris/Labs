@@ -1,0 +1,18 @@
+all: search
+
+search: task2c.o start.o lab4_util.o lab4_util.h
+	ld -m elf_x86_64 start.o task2c.o lab4_util.o -o search
+
+task2c.o: task2c.c
+	gcc -g -Wall -fno-stack-protector -c -o task2c.o task2c.c
+
+start.o : start.s
+	nasm -f elf64 start.s -o start.o
+
+lab4_util.o: lab4_util.c
+	gcc -m64 -Wall -ansi -c -nostdlib -fno-stack-protector lab4_util.c -o lab4_util.o
+
+
+.PHONY: clean
+clean:
+	rm -f *.o search 
